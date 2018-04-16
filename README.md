@@ -38,10 +38,10 @@ $params = [
 ## 典型用法
 ```php
 try {
-	$ret = Pay::支付渠道名称($配置文件信息)->支付方式名称($统一订单信息);
-	var_dump($ret);
+    $ret = Pay::支付渠道名称($配置文件信息)->支付方式名称($统一订单信息);
+    var_dump($ret);
 }catch(\Exception $e) {
-	echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -66,7 +66,7 @@ return [
 | :-------: | :-------:
 |  Web      | 电脑支付
 |  Wap      | 手机网站支付
-|  App      | APP 支付
+|  App      | APP支付
 |  Scan     | 扫码支付
 
 ### 微信支付方式
@@ -91,5 +91,32 @@ return [
 |  method   |   描述
 | :-------: | :-------:
 |  Pub      | 公众号支付
-|  App      | APP 支付
+|  App      | APP支付
 |  Scan     | 扫码支付
+
+### 盈华讯方支付方式
+- PC网站短信支付/Web
+- 手机网站短信支付/Wap
+
+```php
+//微信配置文件
+return [
+    'web' => [
+        'app_id' => '****',
+        'app_secret' => '****',
+        'return_url' => 'http://test.com/vpay_suc.php',
+        'quit_url' => 'http://test.com/vpay.php',
+	],
+	'wap' => [
+        'app_id' => '****',
+        'app_secret' => '****',
+        'return_url' => 'http://test.com/vpay_suc.php',
+        'quit_url' => 'http://test.com/vpay.php',
+	],
+];
+>支付方式名称
+```
+|  method   |   描述
+| :-------: | :-------:
+|  Web      | WEB网站短信支付
+|  Wap      | WAP网站短信支付
