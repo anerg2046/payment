@@ -13,7 +13,7 @@ composer require anerg2046/payment
 - composer
 
 ## 支持的支付方式
-- 支付宝支付
+- [支付宝支付](#支付宝支付)
 - 微信支付
 - 盈华讯方短信支付
 
