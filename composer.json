@@ -1,0 +1,21 @@
+{
+    "name": "anerg2046/payment",
+    "description": "payment alipay weixinpay vnetone",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Coeus",
+            "email": "r.anerg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "anerg\\Payment\\": "src"
+        }
+    }
+}
