@@ -60,8 +60,9 @@ return [
     'pem_private' => '/pathto/private.pem', //用户私钥
     'pem_public' => '/pathto/public.pem', //支付宝公钥
 ];
->支付方式名称
 ```
+
+>支付方式名称
 |  method   |   描述
 | :-------: | :-------:
 |  Web      | 电脑支付
@@ -86,8 +87,9 @@ return [
     'pem_cert' => '/pathto/apiclient_cert.pem',
     'pem_key' => '/pathto/apiclient_key.pem',
 ];
->支付方式名称
 ```
+
+>支付方式名称
 |  method   |   描述
 | :-------: | :-------:
 |  Pub      | 公众号支付
@@ -114,8 +116,9 @@ return [
         'quit_url' => 'http://test.com/vpay.php',
 	],
 ];
->支付方式名称
 ```
+
+>支付方式名称
 |  method   |   描述
 | :-------: | :-------:
 |  Web      | WEB网站短信支付
