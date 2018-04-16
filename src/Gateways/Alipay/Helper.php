@@ -17,7 +17,7 @@ class Helper
      */
     public static function baseParams()
     {
-        $param_keys = ['app_id', 'timestamp', 'charset', 'version', 'sign_type', 'method'];
+        $param_keys = ['app_id', 'timestamp', 'charset', 'version', 'sign_type', 'method', 'return_url', 'notify_url'];
         return Datasheet::get($param_keys);
     }
 
