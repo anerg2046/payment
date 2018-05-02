@@ -108,6 +108,6 @@ class Helper
         if (isset($data[$method]['code']) && $data[$method]['code'] == '10000') {
             return $data[$method];
         }
-        throw new \Exception('支付宝接口错误:' . $data[$method]['msg'] . ' ' . ($data[$method]['sub_code'] ?? '') . ' ' . ($data[$method]['sub_msg'] ?? ''), $data[$method]['code']);
+        throw new \Exception('支付宝接口错误:' . $data[$method]['msg'] . ' ' . (isset($data[$method]['sub_code']) ? $data[$method]['sub_code'] : '') . ' ' . (isset($data[$method]['sub_msg']) ? $data[$method]['sub_msg'] : ''), $data[$method]['code']);
     }
 }

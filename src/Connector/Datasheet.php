@@ -36,7 +36,7 @@ class Datasheet
         self::$_alias = $alias;
     }
 
-    public static function alias(string $name)
+    public static function alias($name)
     {
         return isset(self::$_alias[$name]) ? self::$_alias[$name] : $name;
     }

@@ -14,7 +14,7 @@ abstract class Gateway implements GatewayInterface
      *
      * @return mixed string|array
      */
-    public function pay(string $method, array $params)
+    public function pay($method, array $params)
     {
         $method = get_class($this) . '\\' . Str::uFirst($method) . 'Gateway';
         if (!class_exists($method)) {
@@ -90,7 +90,7 @@ abstract class Gateway implements GatewayInterface
      * 魔术方法，执行支付操作
      *
      */
-    public function __call(string $method, array $params)
+    public function __call($method, array $params)
     {
         return self::pay($method, ...$params);
     }

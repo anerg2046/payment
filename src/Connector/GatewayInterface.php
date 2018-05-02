@@ -11,7 +11,7 @@ interface GatewayInterface
      *
      * @return mixed string|array
      */
-    public function pay(string $method, array $params);
+    public function pay($method, array $params);
 
     /**
      * 查询订单

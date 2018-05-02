@@ -44,7 +44,7 @@ class Alipay extends Gateway
      * @param array $order 订单内容
      * @return array
      */
-    public function query($order)
+    public function query(array $order)
     {
         BizData::set($order);
         //设定接口名称
@@ -59,7 +59,7 @@ class Alipay extends Gateway
      * @param array $order 订单内容
      * @return array
      */
-    public function close($order)
+    public function close(array $order)
     {
         BizData::set($order);
         //设定接口名称
@@ -74,7 +74,7 @@ class Alipay extends Gateway
      * @param array $order 订单内容
      * @return array
      */
-    public function cancel($order)
+    public function cancel(array $order)
     {
         BizData::set($order);
         //设定接口名称
@@ -89,7 +89,7 @@ class Alipay extends Gateway
      * @param array $order 订单内容
      * @return array
      */
-    public function refund($order)
+    public function refund(array $order)
     {
         BizData::set($order);
         //金额统一使用【分】为单位
