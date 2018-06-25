@@ -10,7 +10,7 @@ class Helper
     const GATE_WAY = 'https://openapi.alipay.com/gateway.do';
 
     const RSA_PRIVATE = 1;
-    const RSA_PUBLIC = 2;
+    const RSA_PUBLIC  = 2;
 
     /**
      * 获取公共请求参数
@@ -26,9 +26,9 @@ class Helper
      */
     public static function getRequestParams()
     {
-        $params = self::baseParams();
+        $params                = self::baseParams();
         $params['biz_content'] = json_encode(BizData::all());
-        $params['sign'] = self::signature($params);
+        $params['sign']        = self::signature($params);
         return $params;
     }
 
@@ -38,8 +38,8 @@ class Helper
         $str = Str::buildParams($data);
 
         $rsaKey = self::getRsaKeyVal(self::RSA_PRIVATE);
-        $res = openssl_get_privatekey($rsaKey);
-        $sign = '';
+        $res    = openssl_get_privatekey($rsaKey);
+        $sign   = '';
         openssl_sign($str, $sign, $res, OPENSSL_ALGO_SHA256);
         openssl_free_key($res);
         return base64_encode($sign);
@@ -48,10 +48,10 @@ class Helper
     public static function verify($data, $sign = null)
     {
         if (is_array($data)) {
-            $data = mb_convert_encoding(json_encode($data, JSON_UNESCAPED_UNICODE), 'gbk', 'utf-8');
+            $data = json_decode(mb_convert_encoding(json_encode($data, JSON_UNESCAPED_UNICODE), 'gbk', 'utf-8'), true);
         }
         $rsaKey = self::getRsaKeyVal(self::RSA_PUBLIC);
-        $res = openssl_get_publickey($rsaKey);
+        $res    = openssl_get_publickey($rsaKey);
         $result = (bool) openssl_verify($data, base64_decode($sign), $res, OPENSSL_ALGO_SHA256);
         openssl_free_key($res);
         return $result;
@@ -61,12 +61,12 @@ class Helper
     {
         if ($type === self::RSA_PUBLIC) {
             $keyname = 'pem_public';
-            $header = '-----BEGIN PUBLIC KEY-----';
-            $footer = '-----END PUBLIC KEY-----';
+            $header  = '-----BEGIN PUBLIC KEY-----';
+            $footer  = '-----END PUBLIC KEY-----';
         } else {
             $keyname = 'pem_private';
-            $header = '-----BEGIN RSA PRIVATE KEY-----';
-            $footer = '-----END RSA PRIVATE KEY-----';
+            $header  = '-----BEGIN RSA PRIVATE KEY-----';
+            $footer  = '-----END RSA PRIVATE KEY-----';
         }
         $rsa = Datasheet::get($keyname);
         if (is_file($rsa)) {
@@ -75,7 +75,7 @@ class Helper
         if (empty($rsa)) {
             throw new \Exception('支付宝RSA密钥未配置');
         }
-        $rsa = str_replace([PHP_EOL, $header, $footer], '', $rsa);
+        $rsa    = str_replace([PHP_EOL, $header, $footer], '', $rsa);
         $rsaVal = $header . PHP_EOL . chunk_split($rsa, 64, PHP_EOL) . $footer;
         return $rsaVal;
     }
