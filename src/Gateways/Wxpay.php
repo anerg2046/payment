@@ -18,18 +18,18 @@ class Wxpay extends Gateway
         //设置字段别名，用于统一配置文件和订单提交参数
         //其他特定参数请参照官方文档进行设定
         $alias = [
-            'app_id' => 'appid',
-            'order_no' => 'out_trade_no',
+            'app_id'    => 'appid',
+            'order_no'  => 'out_trade_no',
             'refund_no' => 'out_refund_no',
             'client_ip' => 'spbill_create_ip',
-            'fee' => 'total_fee',
+            'fee'       => 'total_fee',
         ];
         Datasheet::setAlias($alias);
         Datasheet::set($config);
         //设置一些默认值，如果在$params中也有，则会覆盖
         $_default = [
             'spbill_create_ip' => Str::getClientIP(),
-            'nonce_str' => Str::random(),
+            'nonce_str'        => Str::random(),
         ];
         Datasheet::set($_default);
     }
@@ -106,7 +106,7 @@ class Wxpay extends Gateway
     public function success()
     {
         $ret = ['return_code' => 'SUCCESS', 'return_msg' => 'OK'];
-        return Xml::xmlToArr($ret);
+        return Xml::arrToXml($ret);
     }
 
 }
