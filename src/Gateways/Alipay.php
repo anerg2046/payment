@@ -111,7 +111,7 @@ class Alipay extends Gateway
     {
         $data = $_POST;
         $sign = $data['sign'];
-        unset($data['sign_type']);
+        unset($data['sign_type'], $data['sign']);
         foreach ($data as &$value) {
             $value = mb_convert_encoding($value, 'utf-8', 'gbk');
         }
