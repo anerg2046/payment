@@ -16,14 +16,14 @@ class Alipay extends Gateway
         //设置字段别名，用于统一配置文件和订单提交参数
         //其他特定参数请参照官方文档进行设定
         $alias = [
-            'order_no' => 'out_trade_no',
-            'client_ip' => 'spbill_create_ip',
-            'fee' => 'total_amount',
-            'limit_pay' => 'disable_pay_channels',
-            'body' => 'subject',
-            'detail' => 'body',
-            'attach' => 'passback_params',
-            'refund_no' => 'out_request_no',
+            'order_no'   => 'out_trade_no',
+            'client_ip'  => 'spbill_create_ip',
+            'fee'        => 'total_amount',
+            'limit_pay'  => 'disable_pay_channels',
+            'body'       => 'subject',
+            'detail'     => 'body',
+            'attach'     => 'passback_params',
+            'refund_no'  => 'out_request_no',
             'refund_fee' => 'refund_amount',
         ];
         Datasheet::setAlias($alias);
@@ -31,8 +31,8 @@ class Alipay extends Gateway
         //设置一些默认值，如果在$params中也有，则会覆盖
         $_default = [
             'timestamp' => date('Y-m-d H:i:s'),
-            'charset' => 'utf-8',
-            'version' => '1.0',
+            'charset'   => 'utf-8',
+            'version'   => '1.0',
             'sign_type' => 'RSA2',
         ];
         Datasheet::set($_default);
@@ -109,7 +109,7 @@ class Alipay extends Gateway
      */
     public function verify()
     {
-        $data = file_get_contents("php://input");
+        $data = $_POST;
         $sign = $data['sign'];
         unset($data['sign_type']);
         foreach ($data as &$value) {
