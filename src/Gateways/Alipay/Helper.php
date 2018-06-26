@@ -51,7 +51,7 @@ class Helper
         $str    = Str::buildParams($data);
         $rsaKey = self::getRsaKeyVal(self::RSA_PUBLIC);
         $res    = openssl_get_publickey($rsaKey);
-        $result = (bool) openssl_verify($data, base64_decode($sign), $res, OPENSSL_ALGO_SHA256);
+        $result = (bool) openssl_verify($str, base64_decode($sign), $res, OPENSSL_ALGO_SHA256);
         openssl_free_key($res);
         return $result;
     }
