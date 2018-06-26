@@ -47,9 +47,8 @@ class Helper
 
     public static function verify($data, $sign = null)
     {
-        if (is_array($data)) {
-            $data = json_decode(mb_convert_encoding(json_encode($data, JSON_UNESCAPED_UNICODE), 'gbk', 'utf-8'), true);
-        }
+        ksort($data);
+        $str    = Str::buildParams($data);
         $rsaKey = self::getRsaKeyVal(self::RSA_PUBLIC);
         $res    = openssl_get_publickey($rsaKey);
         $result = (bool) openssl_verify($data, base64_decode($sign), $res, OPENSSL_ALGO_SHA256);
