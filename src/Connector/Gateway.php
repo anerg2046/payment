@@ -95,13 +95,13 @@ abstract class Gateway implements GatewayInterface
         return self::pay($method, ...$params);
     }
 
-	/**
-	 * 不支持的方法异常抛出
-	 */
+    /**
+     * 不支持的方法异常抛出
+     */
     private function unsupport($method)
     {
         $gateway = str_replace('anerg\\Payment\\Gateways\\', '', get_class($this));
-        $msg = '支付渠道[' . $gateway . ']不支持操作方式[' . $method . ']';
+        $msg     = '支付渠道[' . $gateway . ']不支持操作方式[' . $method . ']';
         throw new \Exception($msg);
     }
 }

@@ -23,7 +23,7 @@ abstract class _Gateway
     protected function buildPayHtml()
     {
         $params = Helper::getRequestParams();
-        $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='" . Helper::GATE_WAY . "' method='POST'>";
+        $sHtml  = "<form id='alipaysubmit' name='alipaysubmit' action='" . Helper::GATE_WAY . "' method='POST'>";
         foreach ($params as $key => $val) {
             $val = str_replace("'", '&apos;', $val);
             $sHtml .= "<input type='hidden' name='" . $key . "' value='" . $val . "'/>";

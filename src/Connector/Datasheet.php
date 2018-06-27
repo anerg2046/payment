@@ -3,7 +3,7 @@ namespace anerg\Payment\Connector;
 
 class Datasheet
 {
-    protected static $_data = [];
+    protected static $_data  = [];
     protected static $_alias = [];
 
     public static function set($name, $value = null)
@@ -13,7 +13,7 @@ class Datasheet
                 self::set($k, $v);
             }
         } else {
-            $name = self::alias($name) . '___' . get_called_class();
+            $name               = self::alias($name) . '___' . get_called_class();
             self::$_data[$name] = $value;
         }
     }
@@ -26,7 +26,7 @@ class Datasheet
             }
         } else {
             $name = self::alias($name) . '___' . get_called_class();
-            $ret = (isset(self::$_data[$name]) && !empty(self::$_data[$name])) ? self::$_data[$name] : $default;
+            $ret  = (isset(self::$_data[$name]) && !empty(self::$_data[$name])) ? self::$_data[$name] : $default;
         }
         return $ret;
     }
@@ -43,11 +43,11 @@ class Datasheet
 
     public static function all()
     {
-        $data = self::$_data;
+        $data   = self::$_data;
         $return = [];
         foreach ($data as $k => $v) {
             if (strpos($k, '___' . get_called_class()) !== false) {
-                $k = str_replace('___' . get_called_class(), '', $k);
+                $k          = str_replace('___' . get_called_class(), '', $k);
                 $return[$k] = $v;
             }
         }

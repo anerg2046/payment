@@ -2,7 +2,6 @@
 namespace anerg\Payment\Gateways\Vnetone;
 
 use anerg\Payment\Connector\Datasheet;
-use \GuzzleHttp\Client;
 
 class Helper
 {
@@ -13,9 +12,9 @@ class Helper
      */
     public static function getRequestParams()
     {
-        $params = Datasheet::get(['sp', 'od', 'sppwd', 'mz', 'spreq', 'spsuc', 'uid', 'attach']);
+        $params        = Datasheet::get(['sp', 'od', 'sppwd', 'mz', 'spreq', 'spsuc', 'uid', 'attach']);
         $params['md5'] = self::signature($params);
-        $params = array_filter($params);
+        $params        = array_filter($params);
         return $params;
     }
 

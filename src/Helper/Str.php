@@ -10,7 +10,7 @@ class Str
 
     public static function buildParams($params, $urlencode = false)
     {
-		$params = array_filter($params);
+        $params    = array_filter($params);
         $param_str = '';
         foreach ($params as $k => $v) {
             if ($k == 'sign') {

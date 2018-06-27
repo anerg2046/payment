@@ -9,7 +9,7 @@ class Pay
     protected static function init($gateway, $config)
     {
         $gateway = Str::uFirst($gateway);
-        $class = __NAMESPACE__ . '\\Gateways\\' . $gateway;
+        $class   = __NAMESPACE__ . '\\Gateways\\' . $gateway;
         if (class_exists($class)) {
             $app = new $class($config);
             if ($app instanceof GatewayInterface) {

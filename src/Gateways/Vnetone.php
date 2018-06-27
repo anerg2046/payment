@@ -18,12 +18,12 @@ class Vnetone extends Gateway
         //设置字段别名，用于统一配置文件和订单提交参数
         //其他特定参数请参照官方文档进行设定
         $alias = [
-            'app_id' => 'sp',
+            'app_id'     => 'sp',
             'app_secret' => 'sppwd',
-            'order_no' => 'od',
-            'fee' => 'mz',
-            'attach' => 'spzdy',
-            'quit_url' => 'spreq',
+            'order_no'   => 'od',
+            'fee'        => 'mz',
+            'attach'     => 'spzdy',
+            'quit_url'   => 'spreq',
             'return_url' => 'spsuc',
         ];
         Datasheet::setAlias($alias);
