@@ -13,7 +13,7 @@ class WebGateway extends _Gateway
         Datasheet::set('TradeType', 2);
         $ret             = $this->unifiedorder();
         $domain          = Datasheet::get("SandBoxMode") === "true" ? Helper::SANDBOX_DOMAIN : Helper::PRODUCT_DOMAIN;
-        $ret['redirect'] = $domain . '?AuthCode=' . $ret['AuthCode'];
+        $ret['redirect'] = $domain . 'MyCardPay/?AuthCode=' . $ret['AuthCode'];
         return $ret;
     }
 }
