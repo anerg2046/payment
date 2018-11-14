@@ -9,6 +9,8 @@ class Helper
 {
     const SANDBOX_DOMAIN       = 'https://test.b2b.mycard520.com.tw/';
     const PRODUCT_DOMAIN       = 'https://b2b.mycard520.com.tw/';
+    const SANDBOX_JUMP_DOMAIN  = 'https://test.mycard520.com.tw/';
+    const PRODUCT_JUMP_DOMAIN  = 'https://WWW.mycard520.com.tw/';
     const GATEWAY_UNIFIEDORDER = 'MyBillingPay/v1.1/AuthGlobal';
     const GATEWAY_TRADEQUERY   = 'MyBillingPay/v1.1/TradeQuery';
     const GATEWAY_TRADECONFIRM = 'MyBillingPay/v1.1/PaymentConfirm';

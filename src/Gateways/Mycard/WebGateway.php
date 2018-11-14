@@ -12,7 +12,7 @@ class WebGateway extends _Gateway
         //设定交易接口名称
         Datasheet::set('TradeType', 2);
         $ret             = $this->unifiedorder();
-        $domain          = Datasheet::get("SandBoxMode") === "true" ? Helper::SANDBOX_DOMAIN : Helper::PRODUCT_DOMAIN;
+        $domain          = Datasheet::get("SandBoxMode") === "true" ? Helper::SANDBOX_JUMP_DOMAIN : Helper::PRODUCT_JUMP_DOMAIN;
         $ret['redirect'] = $domain . 'MyCardPay/?AuthCode=' . $ret['AuthCode'];
         return $ret;
     }
