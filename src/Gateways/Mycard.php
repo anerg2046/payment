@@ -54,12 +54,12 @@ class Mycard extends Gateway
     /**
      * 查询交易
      *
-     * @param string $authCode
+     * @param array $order
      * @return array
      */
-    public function query($authCode)
+    public function query(array $order)
     {
-        Datasheet::set(['AuthCode' => $authCode]);
+        Datasheet::set($order);
         $result = Helper::request(Helper::GATEWAY_TRADEQUERY, ['AuthCode']);
         return $this->callback($result);
     }
@@ -67,12 +67,12 @@ class Mycard extends Gateway
     /**
      * 确认交易-执行划款
      *
-     * @param string $authCode
+     * @param array $order
      * @return array
      */
-    public function confirm($authCode)
+    public function confirm(array $order)
     {
-        Datasheet::set(['AuthCode' => $authCode]);
+        Datasheet::set($order);
         $result = Helper::request(Helper::GATEWAY_TRADECONFIRM, ['AuthCode']);
         if ($result['ReturnCode'] != 1) {
             throw new \Exception("交易确认失败：" . $data['ReturnMsg']);
