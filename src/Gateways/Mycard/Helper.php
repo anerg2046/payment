@@ -29,7 +29,7 @@ class Helper
                     'PaymentType', 'ItemCode', 'ProductName', 'Amount', 'Currency', 'SandBoxMode', 'FacReturnURL', 'hash_key'];
                 break;
             case self::SIGN_CALLBACK:
-                $fieldKeys = ['ReturnCode', 'PayResult', 'FactradeSeq', 'PaymentType', 'Amount',
+                $fieldKeys = ['ReturnCode', 'PayResult', 'FacTradeSeq', 'PaymentType', 'Amount',
                     'Currency', 'MyCardTradeNo', 'MyCardType', 'PromoCode', 'hash_key'];
                 break;
         }
