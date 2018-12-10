@@ -13,6 +13,7 @@ class Helper
     const GATEWAY_CLOSEORDER   = 'https://api.mch.weixin.qq.com/pay/closeorder';
     const GATEWAY_REFUNDORDER  = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
     const GATEWAY_SHORT_URL    = 'https://api.mch.weixin.qq.com/tools/shorturl';
+    const GATEWAY_TRANSFER     = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
 
     const SSL_VERIFY = true;
 
@@ -32,13 +33,13 @@ class Helper
     /**
      * 对微信响应数据进行处理
      */
-    public static function response($data, $key = null)
+    public static function response($data, $key = null, $recheck = true)
     {
         if ($data['return_code'] != 'SUCCESS') {
             throw new \Exception('微信请求接口发生系统级错误:[' . $data['return_msg'] . (isset($data['err_code_des']) ? $data['err_code_des'] : '') . ']');
 
         }
-        if ($data['sign'] != self::signature($data, $key)) {
+        if ($recheck && $data['sign'] != self::signature($data, $key)) {
             throw new \Exception('微信返回签名验证失败');
         }
         return $data;
@@ -51,7 +52,7 @@ class Helper
      * @param array $params_keys
      * @param bool $ssl
      */
-    public static function request($url, $param_keys, $ssl = false)
+    public static function request($url, $param_keys, $ssl = false, $recheck = true)
     {
         $params         = array_filter(Datasheet::get($param_keys));
         $params['sign'] = self::signature($params, Datasheet::get('md5_key'));
@@ -71,6 +72,6 @@ class Helper
         }
         $xml = $response->getBody()->getContents();
 
-        return self::response(Xml::xmlToArr($xml), Datasheet::get('md5_key'));
+        return self::response(Xml::xmlToArr($xml), Datasheet::get('md5_key'), $recheck);
     }
 }

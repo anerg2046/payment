@@ -101,6 +101,23 @@ class Wxpay extends Gateway
     }
 
     /**
+     * 微信企业付款到零钱
+     *
+     * @return array
+     */
+    public function transfer($options)
+    {
+        Datasheet::set($options);
+        Datasheet::set('mch_appid', Datasheet::get('appid'));
+        Datasheet::set('mchid', Datasheet::get('mch_id'));
+        Datasheet::set('partner_trade_no', Datasheet::get('transfer_no'));
+        Datasheet::set('re_user_name', Datasheet::get('real_name'));
+        $param_keys = ['mch_appid', 'mchid', 'device_info', 'nonce_str', 'partner_trade_no', 'openid', 'check_name',
+            're_user_name', 'amount', 'desc', 'spbill_create_ip'];
+        return Helper::request(Helper::GATEWAY_TRANSFER, $param_keys, true, false);
+    }
+
+    /**
      * 当异步处理完成，返回成功信息
      */
     public function success()
