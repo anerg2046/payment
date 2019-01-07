@@ -7,7 +7,7 @@ use \GuzzleHttp\Client;
 
 class Helper
 {
-    const SANDBOX_DOMAIN       = 'https://test.b2b.mycard520.com.tw/';
+    const SANDBOX_DOMAIN       = 'https://testb2b.mycard520.com.tw/';
     const PRODUCT_DOMAIN       = 'https://b2b.mycard520.com.tw/';
     const SANDBOX_JUMP_DOMAIN  = 'https://test.mycard520.com.tw/';
     const PRODUCT_JUMP_DOMAIN  = 'https://WWW.mycard520.com.tw/';
