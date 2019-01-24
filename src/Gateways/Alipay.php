@@ -112,11 +112,13 @@ class Alipay extends Gateway
         $data = $_POST;
         $sign = $data['sign'];
         unset($data['sign_type']);
-        foreach ($data as &$value) {
-            $value = mb_convert_encoding($value, 'utf-8', $data['charset'] ? $data['charset'] : 'gb2312');
-        }
+
         if (Helper::verify($data, $sign) === false) {
             throw new \Exception('支付宝异步通知验签失败');
+        }
+
+        foreach ($data as &$value) {
+            $value = mb_convert_encoding($value, 'utf-8', $data['charset'] ? $data['charset'] : 'gb2312');
         }
         return $data;
     }
