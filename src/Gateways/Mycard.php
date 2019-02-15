@@ -41,7 +41,7 @@ class Mycard extends Gateway
             throw new \Exception("交易查询失败：" . $data['ReturnMsg']);
         }
         Datasheet::set($data);
-        if ($data['Hash'] != Helper::signature(Helper::SIGN_CALLBACK)) {
+        if (isset($data['Hash']) && $data['Hash'] != Helper::signature(Helper::SIGN_CALLBACK)) {
             throw new \Exception("回调签名验证失败");
         }
 
